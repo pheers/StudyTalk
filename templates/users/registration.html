@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="{% static 'css/design_style.css' %}" rel="stylesheet">
+    <link href="/static/images/stlogo.svg" rel="icon" type="image/x-icon">
+    <title>StudyTalk | Регистрация</title>
+</head>
+
+<body>
+
+<!--<header class="header">-->
+<!--    <div class="container">-->
+<!--        <div class="header__inner">-->
+<!--            <a href="/">-->
+<!--                <img class="header__logo" src="{% static 'images/ЛогоSVG.svg' %}" alt="Лого">-->
+<!--            </a>-->
+<!--            <nav class="nav">-->
+<!--            </nav>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</header>-->
+
+<div class="page">
+    <div class="container">
+        <div class="page-content">
+            <form class="study-talk-form reg-form" method="post">{% csrf_token %}
+                <a href="/">
+                    <img class="header__logo" src="{% static 'images/ЛогоSVG.svg' %}" alt="Лого">
+                </a>
+                <h1 class="form-title">Регистрация</h1>
+                <div class="form-fields-wrapper">
+
+                    {{ user_form.nick_name }}
+                    {{ user_form.nick_name.errors }}
+                    <div class="pass-inputs">
+                        {{ user_form.password }}
+                        {{ user_form.password2 }}
+                    </div>
+                    {{ user_form.password.errors }}
+                    {{ user_form.password2.errors }}
+                    {{ user_form.email }}
+                    {{ user_form.email.errors }}
+                    <div class="ref-buttons">
+                        <a href="/users/signin" class="btn-ref">
+                            Уже есть аккаунт
+                        </a>
+                        <button type="submit" class="btn submit-button">Зарегистрироваться</button>
+                    </div>
+                </div>
+            </form>
+
+            <a href="#flaticon-freepik-popup"><img class="reg-picture" src="{% static 'images/reg-picture.svg' %}"
+                                                   alt="Регистрация"></a>
+        </div>
+    </div>
+
+    <div id="flaticon-freepik-popup" class="js-popup">
+        <div class="popup__content">
+            <a href="#"><img class="close-icon" src="{% static 'images/close.svg' %}" alt="close_icon"></a>
+            <div class="popup__content__wrapper">
+                {#            <div class="popup_close">x</div>#}
+                <h2 class="popup__title">Пасхалка!</h2>
+                <p>Все векторные элементы были взяты с сайтов Freepik и Flaticon</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+
+</html>

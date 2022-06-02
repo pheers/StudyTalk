@@ -1,0 +1,58 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="{% static 'css/design_style.css' %}" rel="stylesheet">
+    <link href="/static/images/stlogo.svg" rel="icon" type="image/x-icon">
+    <title>StudyTalk | Подтверждение почты</title>
+</head>
+
+<body>
+
+<!--<header class="header">-->
+<!--    <div class="container">-->
+<!--        <div class="header__inner">-->
+<!--            <a href="/">-->
+<!--                <img class="header__logo" src="{% static 'images/ЛогоSVG.svg' %}" alt="Лого">-->
+<!--            </a>-->
+<!--            <nav class="nav">-->
+<!--            </nav>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</header>-->
+
+<div class="page">
+    <div class="container">
+        <div class="page-content-centered">
+            <form class='study-talk-form email-confirm-form' method="post">{% csrf_token %}
+                <a href="/">
+                    <img class="header__logo" src="{% static 'images/ЛогоSVG.svg' %}" alt="Лого">
+                </a>
+                <h1 class="form-title">Подверждение почты</h1>
+                <div class="form-fields-wrapper">
+                    <input type="text" class="code-input" placeholder="Введите код" name="code_confirm">
+
+                    <div class="email-confirm-form__text-wrapper">
+                        <h5 class="email-confirm-form__text">На почту {{ email }} был отправлен код подтверждения.</h5>
+                        <h5 class="email-confirm-form__text">Введите его, чтобы продолжить.</h5>
+                    </div>
+
+                    <div class="email-confirm-form__text-wrapper">
+                        <button class="btn btn-resending">Отправить повторно</button>
+                    </div>
+
+                    <div class="email-confirm-form__text-wrapper">
+                        <button type="submit" class="btn submit-button">Подтвердить</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

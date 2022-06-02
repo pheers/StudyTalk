@@ -1,0 +1,543 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="/static/less/main_page_style.css" rel="stylesheet">
+    <link href="/static/images/stlogo.svg" rel="icon" type="image/x-icon">
+
+    <title>StudyTalk | Мессенджер</title>
+</head>
+<body>
+
+<div class="overlay" id="overlay-popup"></div>
+
+<!--Модальное окно с информацией чата-->
+<form class="study-talk-form chat-info-form js-popup" id="chat-info-popup">
+
+    <img class="js-popup-close close-icon" src="/static/images/close.svg" alt="close_icon">
+    <div class="phone-back-btn js-popup-close">
+        <span class="iconify back-icon" data-icon="eva:arrow-back-fill"></span>
+    </div>
+
+    <h1 class="form-title">Информация чата</h1>
+
+    <div class="chat-info-form__attrs">
+        <input type="file" id="edit-chat-avatar-input" class="image-input"
+               accept="image/jpeg, image/png, image/jpg">
+        <label class="photo-input-label" for="edit-chat-avatar-input">
+            <span class="iconify load-image-icon" data-icon="bi:plus"></span>
+            <div class="darken-layer"></div>
+            <div class="display-image chat-avatar"
+                 style="background-image: url(../static/images/user_avatar.png)"></div>
+        </label>
+        <div class="chat-info-form__attrs__text">
+            <input spellcheck="false" class="chat-title-input" type="text" value="CИРЕВНЕВЫЙ КРУЖОВНИК">
+            <p id='chat-members-count' class="gray-text">17 участников</p>
+        </div>
+    </div>
+
+    <div class="chat-info-form__users">
+        <h3>Участники</h3>
+        <div class="space-between-alignment">
+            <a href="#add-members-popup" class="add-member-btn js-popup-link">
+                <div class="add-member-icon">
+                    <span class="iconify opt-icon" data-icon="bi:plus"></span>
+                </div>
+                <h4 class="left-margin">Добавить участников</h4>
+            </a>
+        </div>
+
+        <div class="search-field">
+            <img class="search-icon" src="/static/images/search_icon.svg" alt="Поиск">
+            <input type="text" class="search-input" placeholder="Введите имя или фамилию" autocomplete="off">
+        </div>
+
+        <div class="chat-info-form__user-list">
+
+            <div class="user-list__stroke-no-hover">
+                <div class="user-list__stroke__user">
+                    <img class="account-avatar" src="/static/images/user_avatar.png" alt="user_avatar">
+                    <div class="user-info-wrapper">
+                        <h4>Первый Булат</h4>
+                        <p class="gray-text">samsa_destroyer777</p>
+                    </div>
+                </div>
+                <span class="iconify kick-icon" data-icon="ep:close-bold"></span>
+            </div>
+
+            <div class="user-list__stroke-no-hover">
+                <div class="user-list__stroke__user">
+                    <img class="account-avatar" src="/static/images/user_avatar.png" alt="user_avatar">
+                    <div class="user-info-wrapper">
+                        <h4>Первый Булат</h4>
+                        <p class="gray-text">samsa_destroyer777</p>
+                    </div>
+                </div>
+                <span class="iconify kick-icon" data-icon="ep:close-bold"></span>
+            </div>
+
+            <div class="user-list__stroke-no-hover">
+                <div class="user-list__stroke__user">
+                    <img class="account-avatar" src="/static/images/user_avatar.png" alt="user_avatar">
+                    <div class="user-info-wrapper">
+                        <h4>Первый Булат</h4>
+                        <p class="gray-text">samsa_destroyer777</p>
+                    </div>
+                </div>
+                <span class="iconify kick-icon" data-icon="ep:close-bold"></span>
+            </div>
+
+            <div class="user-list__stroke-no-hover">
+                <div class="user-list__stroke__user">
+                    <img class="account-avatar" src="/static/images/user_avatar.png" alt="user_avatar">
+                    <div class="user-info-wrapper">
+                        <h4>Первый Булат</h4>
+                        <p class="gray-text">samsa_destroyer777</p>
+                    </div>
+                </div>
+                <span class="iconify kick-icon" data-icon="ep:close-bold"></span>
+            </div>
+
+            <div class="user-list__stroke-no-hover">
+                <div class="user-list__stroke__user">
+                    <img class="account-avatar" src="/static/images/user_avatar.png" alt="user_avatar">
+                    <div class="user-info-wrapper">
+                        <h4>Первый Булат</h4>
+                        <p class="gray-text">samsa_destroyer777</p>
+                    </div>
+                </div>
+                <span class="iconify kick-icon" data-icon="ep:close-bold"></span>
+            </div>
+
+            <div class="user-list__stroke-no-hover">
+                <div class="user-list__stroke__user">
+                    <img class="account-avatar" src="/static/images/user_avatar.png" alt="user_avatar">
+                    <div class="user-info-wrapper">
+                        <h4>Первый Булат</h4>
+                        <p class="gray-text">samsa_destroyer777</p>
+                    </div>
+                </div>
+                <span class="iconify kick-icon" data-icon="ep:close-bold"></span>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="leave-chat-btn">Покинуть чат</div>
+</form>
+
+<!--Модальное окно добавления участников в чат-->
+<div class="study-talk-form add-members-form js-popup" id="add-members-popup" method="post">
+
+    <img class="js-popup-close close-icon" src="/static/images/close.svg" alt="close_icon">
+    <div class="back-btn js-popup-back">
+        <span class="iconify back-icon" data-icon="eva:arrow-back-fill"></span>
+    </div>
+
+    <h1 style="text-align: center">Добавить участников</h1>
+
+    <div class="form-container">
+
+        <div class="add-contact-form__header">
+            <div class="search-field">
+                <img class="search-icon" src="/static/images/search_icon.svg" alt="Поиск">
+                <input type="text" class="search-input" placeholder="Введите имя или фамилию" autocomplete="off">
+            </div>
+        </div>
+
+        <div class="add-contact-form__user-list">
+
+            <div class="user-list__stroke-no-hover">
+                <div class="user-list__stroke__user">
+                    <img class="account-avatar" src="/static/images/user_avatar.png" alt="user_avatar">
+                    <div class="user-info-wrapper">
+                        <h4>Первый Булат</h4>
+                        <p class="gray-text">samsa_destroyer777</p>
+                    </div>
+                </div>
+                <button class="submit-button btn-add">Добавить</button>
+            </div>
+
+            <div class="user-list__stroke-no-hover">
+                <div class="user-list__stroke__user">
+                    <img class="account-avatar" src="/static/images/user_avatar.png" alt="user_avatar">
+                    <div class="user-info-wrapper">
+                        <h4>Второй Булат</h4>
+                        <p class="gray-text">samsa_destroyer777</p>
+                    </div>
+                </div>
+                <button class="submit-button btn-add">Добавить</button>
+            </div>
+
+            <div class="user-list__stroke-no-hover">
+                <div class="user-list__stroke__user">
+                    <img class="account-avatar" src="/static/images/user_avatar.png" alt="user_avatar">
+                    <div class="user-info-wrapper">
+                        <h4>Третий Булат</h4>
+                        <p class="gray-text">samsa_destroyer777</p>
+                    </div>
+                </div>
+                <button class="submit-button btn-add">Добавить</button>
+            </div>
+
+            <div class="user-list__stroke-no-hover">
+                <div class="user-list__stroke__user">
+                    <img class="account-avatar" src="/static/images/user_avatar.png" alt="user_avatar">
+                    <div class="user-info-wrapper">
+                        <h4>Четвертый Булат</h4>
+                        <p class="gray-text">samsa_destroyer777</p>
+                    </div>
+                </div>
+                <button class="submit-button btn-add">Добавить</button>
+            </div>
+
+            <div class="user-list__stroke-no-hover">
+                <div class="user-list__stroke__user">
+                    <img class="account-avatar" src="/static/images/user_avatar.png" alt="user_avatar">
+                    <div class="user-info-wrapper">
+                        <h4>Пятый Булат</h4>
+                        <p class="gray-text">samsa_destroyer777</p>
+                    </div>
+                </div>
+                <button class="submit-button btn-add">Добавить</button>
+            </div>
+
+            <div class="user-list__stroke-no-hover">
+                <div class="user-list__stroke__user">
+                    <img class="account-avatar" src="/static/images/user_avatar.png" alt="user_avatar">
+                    <div class="user-info-wrapper">
+                        <h4>Шестой Булат</h4>
+                        <p class="gray-text">samsa_destroyer777</p>
+                    </div>
+                </div>
+                <button class="submit-button btn-add">Добавить</button>
+            </div>
+
+
+            <div class="user-list__stroke-no-hover">
+                <div class="user-list__stroke__user">
+                    <img class="account-avatar" src="/static/images/user_avatar.png" alt="user_avatar">
+                    <div class="user-info-wrapper">
+                        <h4>Седьмой Булат</h4>
+                        <p class="gray-text">samsa_destroyer777</p>
+                    </div>
+                </div>
+                <button class="submit-button btn-add">Добавить</button>
+            </div>
+
+            <div class="user-list__stroke-no-hover">
+                <div class="user-list__stroke__user">
+                    <img class="account-avatar" src="/static/images/user_avatar.png" alt="user_avatar">
+                    <div class="user-info-wrapper">
+                        <h4>Восьмой Булат</h4>
+                        <p class="gray-text">samsa_destroyer777</p>
+                    </div>
+                </div>
+                <button class="submit-button btn-add">Добавить</button>
+            </div>
+
+            <div class="user-list__stroke-no-hover">
+                <div class="user-list__stroke__user">
+                    <img class="account-avatar" src="/static/images/user_avatar.png" alt="user_avatar">
+                    <div class="user-info-wrapper">
+                        <h4>Девятый Булат</h4>
+                        <p class="gray-text">samsa_destroyer777</p>
+                    </div>
+                </div>
+                <button class="submit-button btn-add">Добавить</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!--Модальное окно добавления контактов-->
+<div class="study-talk-form add-contact-form js-popup" id="add-contact-popup" method="post">
+
+    <img class="js-popup-close close-icon" src="/static/images/close.svg" alt="close_icon">
+    <div class="phone-back-btn js-popup-close">
+        <span class="iconify back-icon" data-icon="eva:arrow-back-fill"></span>
+    </div>
+
+    <h1 class="form-title">Добавить контакт</h1>
+
+    <div class="form-container">
+
+        <div class="add-contact-form__header">
+            <div class="search-field">
+                <img class="search-icon" src="/static/images/search_icon.svg" alt="Поиск">
+                <input type="text" id="add-contact-search-input" class="search-input" placeholder="Введите никнейм" autocomplete="off">
+            </div>
+        </div>
+
+        <div class="add-contact-form__user-list">
+
+        <h4 class="initialMessage">Найдите людей, с которыми <br> вы будете общаться днями напролет</h4>
+<!--            <div class="user-list__stroke-no-hover">-->
+<!--                <div class="user-list__stroke__user">-->
+<!--                    <img class="account-avatar" src="/static/images/user_avatar.png" alt="user_avatar">-->
+<!--                    <div class="user-info-wrapper">-->
+<!--                        <h4>Первый Булат</h4>-->
+<!--                        <p class="gray-text">samsa_destroyer777</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <button class="submit-button btn-add">Добавить</button>-->
+<!--            </div>-->
+
+        </div>
+    </div>
+
+</div>
+<!---->
+
+<!--Модальное окно профиля пользователя-->
+<form action="/users/settings" enctype="multipart/form-data" class="study-talk-form user-profile-form js-popup" id="account-popup" method="post">
+    {% csrf_token %}
+
+    <div class="js-popup-close phone-back-btn">
+        <span class="iconify back-icon" data-icon="eva:arrow-back-fill"></span>
+    </div>
+    <img class="js-popup-close close-icon" src="/static/images/close.svg" alt="close_icon">
+
+    <div class="user-profile-form__content popup__content">
+
+        <input name="profile_picture" type="file" id="profile-avatar-input" class="image-input" accept="image/jpeg, image/png, image/jpg">
+        <!--        <input type="image" class="user-profile__avatar" src="{{ user.avatar_url }}" alt="user_avatar">-->
+        <label class="photo-input-label" for="profile-avatar-input">
+            <span class="iconify load-image-icon" data-icon="bi:plus"></span>
+            <div class="darken-layer"></div>
+            <div class="display-image" style="background-image: url({{ user.avatar_url }})"></div>
+        </label>
+
+        <div class="user-profile-form__content__right-side-wrapper">
+            <div class="profile-user-title">
+                <h1 class="form-title">Мой профиль</h1>
+                <p class="email-label"> {{ user.login }}</p>
+            </div>
+
+            <div class="form-lines-wrapper">
+                <div class="form-line">
+                    <label class="gray-text ">Имя</label>
+                    <input name="first_name" placeholder="{{ user.first_name }}" type="text" value="{{ user.first_name }}"
+                           class="profile-input">
+                </div>
+                <div class="form-line">
+                    <label class="gray-text">Фамилия</label>
+                    <input name="second_name" placeholder="{{ user.last_name }}" type="text" value="{{ user.last_name }}"
+                           class="profile-input">
+                </div>
+                <div class="form-line">
+                    <label name="nick_name" class="gray-text">Никнейм</label>
+                    <input placeholder="{{ user.login }}" type="text" value="{{ user.login }}" class="profile-input">
+                </div>
+                <div class="form-line">
+                    <label name="email" class="gray-text">E-mail</label>
+                    <input placeholder="{{ user.email }}" type="text" value="{{ user.email }}" class="profile-input">
+                </div>
+            </div>
+            {% csrf_token %}
+            <button type="submit" class="btn submit-button right_bottom_item js-popup-close">Сохранить</button>
+        </div>
+    </div>
+</form>
+
+<!--Модальное окно создания чата-->
+<form class="study-talk-form create-chat-form js-popup" onsubmit="return false;" id="create-chat-popup" method="post">
+    <div class="phone-back-btn js-popup-close">
+        <span class="iconify back-icon" data-icon="eva:arrow-back-fill"></span>
+    </div>
+    <img class="js-popup-close close-icon" src="/static/images/close.svg" alt="close_icon">
+
+    <h1 class="form-title">Создать чат</h1>
+
+    <div class="form-container">
+
+        <div class="create-chat-form__header">
+            <div class="search-field">
+                <img class="search-icon" src="/static/images/search_icon.svg" alt="Поиск">
+                <input id="create-chat-search" type="text" class="search-input" placeholder="Введите имя или фамилию" autocomplete="off">
+            </div>
+        </div>
+
+        <div class="create-chat-form__user-list">
+            <!--            <h4 class="initialMessage">У Вас нет контактов, которые можно пригласить в чат</h4>-->
+        </div>
+
+        <div class="create-chat-form__title-input-block">
+            <div class="create-chat-form__title-input-block__items">
+                <input name="picture" type="file" id="chat-avatar-input" class="image-input"
+                       accept="image/jpeg, image/png, image/jpg">
+                <!--        <input type="image" class="user-profile__avatar" src="{{ user.avatar_url }}" alt="user_avatar">-->
+                <label class="photo-input-label" for="chat-avatar-input">
+                    <span class="iconify load-image-icon" data-icon="bi:plus"></span>
+                    <div class="darken-layer"></div>
+                    <div class="display-image chat-avatar"
+                         style="background-image: url(../static/images/user_avatar.png)"></div>
+                </label>
+                <input autocomplete="off" spellcheck="false" type="text" id="create-chat-input-name" name="name" class="message-input"
+                       placeholder="Введите название...">
+                {% csrf_token %}
+                <button id="create-chat-btn" disabled="disabled" type="submit" class="btn submit-button create-btn ">Создать</button>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+<header class="header">
+    <div class="header-container">
+        <div class="header__inner">
+
+            <div class="header__inner__left">
+                <div id="chats-sidebar-link">
+                    <span class="iconify sidebar-btn" data-icon="charm:menu-hamburger"></span>
+                </div>
+
+                <a href="/">
+                    <img class="header__logo" src="/static/images/%D0%9B%D0%BE%D0%B3%D0%BESVG.svg" alt="Лого">
+                </a>
+            </div>
+
+            <div id="desktop--header__account" class="header__inner__account">
+                <div class="header__inner__account__user-info">
+                    <h4>{{user.first_name}} {{user.last_name}}</h4>
+                    <p class="gray-text">{{user.login}}</p>
+                </div>
+
+                <a href="#account-popup" class="study-talk-account-item js-popup-link">
+                    <img class="account-avatar" src="{{ user.avatar_url }}" alt="Аватар">
+                    <img class="account-edit-icon" src="{% static 'images/setting_icon.svg' %}" alt="Настройки">
+                </a>
+
+                <div class="rounded-text-billet">
+                    <a href="/users/out">
+                        <span class="iconify header__exit"
+                              data-icon="fluent:arrow-exit-20-filled"></span></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</header>
+
+<!--Страница-->
+<div class="page">
+    <div class="container">
+        <div class="page-content">
+
+            <div class="chats-wrapper">
+
+                <div id="phone--header__account" class="header__inner__account">
+                    <div class="rounded-text-billet">
+                        <a href="/users/out"><span class="iconify header__exit"
+                                                   data-icon="fluent:arrow-exit-20-filled"></span></a>
+                    </div>
+
+                    <div class="header__inner__account__user-info">
+                        <h4>{{user.first_name}} {{user.last_name}}</h4>
+                        <p class="gray-text">{{user.login}}</p>
+                    </div>
+
+                    <a href="#account-popup" class="study-talk-account-item js-popup-link">
+                        <img class="account-avatar" src="{{ user.avatar_url }}" alt="Аватар">
+                        <img class="account-edit-icon" src="{% static 'images/setting_icon.svg' %}" alt="Настройки">
+                    </a>
+                </div>
+
+                <div class="chats-wrapper__phone-options">
+                    <a href="#create-chat-popup" class="js-popup-link">
+                        <span class="iconify opt-icon" data-icon="akar-icons:chat-add"></span>
+                        <p>Создать чат</p>
+                    </a>
+                    <a href="#add-contact-popup" class="js-popup-link">
+                        <span class="iconify opt-icon" data-icon="akar-icons:person-add"></span>
+                        <p>Добавить контакт</p>
+                    </a>
+                </div>
+
+                <div class="chats-wrapper__header">
+
+                    <div class="search-field" id="main-chats-search">
+                        <span class="iconify" data-icon="eva:search-fill" style="font-size: 20px"></span>
+                        <input type="text" id="chats-wrapper-search-input" class="search-input" placeholder="Поиск">
+                        <span class="iconify clear-input" data-icon="ep:close-bold" style="font-size: 20px"></span>
+                    </div>
+
+                    <div class="options-dropdown js-dropdown">
+                        <div class="options-item">
+                            <img class="options-icon" src="{% static 'images/options-icon.svg' %}" alt="Опции чата">
+                        </div>
+                        <div class="dropdown-content js-dropdown-content">
+                            <a href="#create-chat-popup" class="js-popup-link">
+                                <img class="opt-icon" src="{% static 'images/add_chat.svg' %}" alt="Чат">
+                                <p>Создать чат</p>
+                            </a>
+                            <a href="#add-contact-popup" class="js-popup-link">
+                                <span class="iconify opt-icon" data-icon="akar-icons:person-add"></span>
+                                <p>Добавить контакт</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="chats-wrapper__inner">
+                    {% for chat in chats %}
+                    <div id="{{ chat.id }}" data-name="{{ chat.name }}" class="chat-wrapper__inner__stroke">
+                        <div class="chats-wrapper__inner__stroke__user">
+                            <img class="account-avatar" src="{{ chat.ava_url }}" alt="user_avatar">
+                            <div class="user-info-wrapper">
+                                <h4 class="">{{ chat.name }}</h4>
+                                {% if chat.last_message %}
+                                <p class="gray-text">{% if chat.last_message.author.name %}
+                                    {{ chat.last_message.author.name }}: {% endif %}{{ chat.last_message.text }}</p>
+                                {% else %} <p class="gray-text">Чат создан</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% if chat.unread %}
+                        <div class="unread-mess-count"><h5>{{chat.unread}}</h5></div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                    <!--                    <div class="chat-wrapper__inner__stroke">-->
+                    <!--                        <div class="chats-wrapper__inner__stroke__user">-->
+                    <!--                            <img class="account-avatar" src="{% static 'images/user_avatar.png' %}" alt="user_avatar">-->
+                    <!--                            <div class="user-info-wrapper">-->
+                    <!--                                <h4>Первый Булат</h4>-->
+                    <!--                                <p class="gray-text">Не верну</p>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                        <div class="unread-mess-count">-->
+                    <!--                            <h5>2</h5>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
+
+                </div>
+
+            </div>
+
+            <div class="current-chat-block">
+                <h4 class="initialMessage">Выберите, кому написать длинющее сообщение, <br> которое даже сюда не влезет</h4>
+            </div>
+
+            <p class="gray-text"></p>
+
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript" src="/static/less/less.js"></script>
+<script type="text/javascript" src="/static/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+<script type="text/javascript" src="/static/js/main.js"></script>
+<script type="text/javascript" src="/static/js/script.js"></script>
+
+</body>
+</html>

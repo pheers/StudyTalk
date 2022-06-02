@@ -1,0 +1,51 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="{% static 'css/home_style.css' %}" rel="stylesheet">
+    <link href="/static/images/stlogo.svg" rel="icon" type="image/x-icon">
+    <title>StudyTalk | Главная</title>
+</head>
+<body>
+
+<div class="page">
+    <div class="container">
+        <div class="page-content">
+            <div class="content-wrapper">
+                <a href="/">
+                    <img id="home-page-logo" class="home-logo" src="{% static 'images/ЛогоSVG.svg' %}" alt="Лого">
+                </a>
+                <h1 class="content-title">Мессенджер для студентов
+                    с возможностью постоянно ломаться
+                </h1>
+                <p class="desc">Общайтесь с одногруппниками и друзьями в удобном мессенджере для студентов </p>
+                <nav class="content-buttons">
+                    <a href="users/login" class="btn submit-button">
+                        Зарегистрироваться
+                    </a>
+                    <a href="/users/signin" class="btn btn-sign-in">Войти</a>
+                </nav>
+            </div>
+            <a href="#flaticon-freepik-popup">
+                <img class="home-picture" src="{% static 'images/Students_svg.svg' %}" alt="Студенты">
+            </a>
+        </div>
+    </div>
+
+    <div id="flaticon-freepik-popup" class="js-popup">
+        <div class="popup__content">
+            <a href="#"><img class="close-icon" src="{% static 'images/close.svg' %}" alt="close_icon"></a>
+            <div class="popup__content__wrapper">
+                <h2 class="popup__title">Пасхалка!</h2>
+                <p>Все векторные элементы были взяты с сайтов Freepik и Flaticon</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

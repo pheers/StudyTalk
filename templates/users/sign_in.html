@@ -1,0 +1,80 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="{% static 'css/design_style.css' %}" rel="stylesheet">
+    <link href="/static/images/stlogo.svg" rel="icon" type="image/x-icon">
+    <title>StudyTalk | Войти</title>
+</head>
+
+<body>
+
+<!--<header class="header">-->
+<!--    <div class="container">-->
+<!--        <div class="header__inner">-->
+<!--            <a href="/">-->
+<!--                <img class="header__logo" src="{% static 'images/ЛогоSVG.svg' %}" alt="Лого">-->
+<!--            </a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</header>-->
+
+<div class="page">
+    <div class="container">
+        <div class="page-content">
+
+            <form class='study-talk-form sign-form' method="post">{% csrf_token %}
+                <a href="/">
+                    <img class="header__logo" src="{% static 'images/ЛогоSVG.svg' %}" alt="Лого">
+                </a>
+                <h1 class="form-title">Войти</h1>
+                <div class="form-fields-wrapper">
+
+                    <div class="email-or-user-field">
+                        <span class="iconify user-icon" data-icon="ant-design:user-outlined" style="color: #f8f8f8;"></span>
+                        {{ form.email }}
+                    </div>
+
+                    <div class="email-or-user-field">
+                        <span class="iconify lock-icon" data-icon="bx:lock"></span>
+                        {{ form.password }}
+                    </div>
+                    <div class="email-or-user-field" style="margin-left: 40px">
+                        {{ form.password.errors }}
+                    </div>
+
+
+                    <div class="ref-buttons">
+                        <a href="/users/login" class="btn-ref">
+                            Создать аккаунт
+                        </a>
+                        <button type="submit" class="btn submit-button">Войти</button>
+                    </div>
+
+                </div>
+            </form>
+            <a href="#flaticon-freepik-popup">
+                <img class="sign-in-picture" src="{% static 'images/sign_in_picture.svg' %}" alt="Войти_картинка">
+            </a>
+        </div>
+    </div>
+
+    <div id="flaticon-freepik-popup" class="js-popup">
+        <div class="popup__content">
+            <a href="#"><img class="close-icon" src="{% static 'images/close.svg' %}" alt="close_icon"></a>
+            <div class="popup__content__wrapper">
+                <h2 class="popup__title">Пасхалка!</h2>
+                <p>Все векторные элементы были взяты с сайтов Freepik и Flaticon</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+</body>
+</html>
